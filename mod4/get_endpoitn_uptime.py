@@ -1,8 +1,7 @@
 
 from typing import Optional
-from flask import request
 import uptime
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
