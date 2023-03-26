@@ -6,16 +6,18 @@ from wtforms.validators import InputRequired, Email, NumberRange, Optional, Vali
 app = Flask(__name__)
 
 
+
+
 class RegistrationForm(FlaskForm):
     email = StringField(validators=[InputRequired(), Email()])
-    phone = IntegerField(validators=[InputRequired(), NumberRange(min=1000000000, max=9999999999)])
+    phone = IntegerField(validators=[InputRequired(), NumberLength(10, 10), number_length(10, 10)])
     name = StringField(validators=[InputRequired()])
     address = StringField(validators=[InputRequired()])
     index = IntegerField(validators=[InputRequired(), NumberRange(min=100000, max=999999)])
     comment = StringField(validators=[InputRequired()])
 
 
-def number_length(min: int, max: int, message: Optional[str] = None):
+def number_length(min: int, max: int, message: Optional = ""):
 
     def _number_length(form: FlaskForm, field: Field):
         if len(str(field.data)) < min or len(str(field.data)) > max or field.data <= 0:
