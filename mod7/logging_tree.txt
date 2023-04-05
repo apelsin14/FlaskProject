@@ -1,0 +1,31 @@
+<--""
+   Level WARNING
+   |
+   o<--"calculate_logger"
+   |   Level DEBUG
+   |   Handler Stream <_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>
+   |     Level DEBUG
+   |     Formatter fmt='%(levelname)s | %(name)s | %(asctime)s | %(lineno)d | %(message)s' datefmt='%H:%M:%S'
+   |   Handler <FileHandlerByLevels (DEBUG)>
+   |     Level DEBUG
+   |     Formatter fmt='%(levelname)s | %(name)s | %(asctime)s | %(lineno)d | %(message)s' datefmt='%H:%M:%S'
+   |
+   o<--"server_logger"
+   |   Level DEBUG
+   |   Handler HTTP POST to http://127.0.0.1:5000/logs
+   |
+   o<--"file"
+   |   Level INFO
+   |   Handler TimedRotatingFile '/home/mpirtgod/PycharmProjects/AdvancePython/mod7/utils.log' when='H' interval=10 backupCount=5
+   |     Level INFO
+   |     Filter <Filter.filter object at 0x7f01abd58a30>
+   |     Formatter fmt='%(asctime)s, %(levelname)s, %(message)s' datefmt='%H:%M:%S'
+   |
+   o<--"utils_logger"
+       Level DEBUG
+       Handler Stream <_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>
+         Level DEBUG
+         Formatter fmt='%(asctime)s, %(levelname)s, %(message)s' datefmt='%H:%M:%S'
+       Handler <FileHandlerByLevels (DEBUG)>
+         Level DEBUG
+         Formatter fmt='%(levelname)s | %(name)s | %(asctime)s | %(lineno)d | %(message)s' datefmt=None
